@@ -13,9 +13,8 @@ public class DamkaBoard {
 				    System.out.print(" *");
 			    }
 			} else {     // prints odd lines
-				System.out.print("*");
-				for (int j = 1; j < n ; j++ ) {
-					System.out.print(" *");
+				for (int j = 0; j < n ; j++ ) {
+					System.out.print("* ");
 				} 
 			}
 			// moves to a new line
