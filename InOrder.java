@@ -4,6 +4,15 @@
  */
 public class InOrder {
 	public static void main (String[] args) {
-		//// Write your code here
+		int last;
+		// first random int
+		int num = (int) (Math.random() * 10);
+		do {
+			// keeps the last random int
+			last = num;
+			System.out.print(num + " ");
+			// randomizing new int
+			num = (int) (Math.random() * 10) ;
+		} while (num >= last); // checks if there is a non-decreasing sequence
 	}
 }

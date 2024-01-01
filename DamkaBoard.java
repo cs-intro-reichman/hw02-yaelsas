@@ -3,6 +3,23 @@
  */
 public class DamkaBoard {
 	public static void main(String[] args) {
-		//// Put your code here
+		// gets board size from the user
+		int n = Integer.parseInt(args[0]);
+		// prints the board
+		for (int i = 1; i <= n ; i++ ) {
+			// prints even lines
+			if ( i % 2 == 0) {
+			    for (int j = 0; j < n ; j++ ) {
+				    System.out.print(" *");
+			    }
+			} else {     // prints odd lines
+				System.out.print("*");
+				for (int j = 1; j < n ; j++ ) {
+					System.out.print(" *");
+				} 
+			}
+			// moves to a new line
+			System.out.println();
+		}
 	}
 }
