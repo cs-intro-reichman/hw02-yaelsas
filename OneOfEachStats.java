@@ -14,7 +14,53 @@ public class OneOfEachStats {
 		int seed = Integer.parseInt(args[1]);
 		// Initailizes a random numbers generator with the given seed value
         Random generator = new Random(seed);  
-		
+		double sum = 0;
+		// counters for number of families with x children
+		int twoChildCount = 0;
+		int threeChildCount = 0;
+		int fourPlusChildCount = 0;
+		String mode = "2.";
+		// loop of T experiments
+		for (int i = 0; i < T ; i++) {
+			boolean isBoy = false;
+		    boolean isGirl = false;
+		    int count = 0;
+			// loop running until there are 1 boy and 1 girl
+		    while (!isBoy || !isGirl) {
+			    double rnd = generator.nextDouble();   // randomizing a child
+			    if (rnd > 0.5) {    // checks if child is a girl
+				    isGirl = true;
+			    } else {           
+				     isBoy = true;
+			    }
+				// counts how many children were born
+			    count++;
+		    }
+			
+			// count how many families were born with the same number of children
+			if (count >= 4) {
+				fourPlusChildCount++;
+			} else if (count == 3) {
+				threeChildCount++;
+			} else {
+				twoChildCount++;
+			}
+			// sum of all children that were born in T experiments
+			sum += count;
+		}
+		// checks mode
+		if (threeChildCount > twoChildCount && threeChildCount > fourPlusChildCount) {
+			mode = "3.";
+		} else if (fourPlusChildCount > threeChildCount && fourPlusChildCount > twoChildCount) {
+			mode = "4 or more.";
+		}
+		// prnts the results
+		System.out.println("Average: " + (sum / T) +
+		" children to get to at least one of each gender");
+		System.out.println("Number of families with 2 children: " + twoChildCount);
+		System.out.println("Number of families with 3 children: " + threeChildCount);
+		System.out.println("Number of families with 4 or more children: " + fourPlusChildCount);
+		System.out.println("The most common number of children is " + mode);
 		//// In the previous version of this program, you used a statement like:
 		//// double rnd = Math.random();
 		//// Where "rnd" is the variable that stores the generated random value.
